@@ -47,9 +47,8 @@ app.post("/add-prod", verifyToken, async (req, res) => {
   res.send(data);
 });
 
-app.post("/prod-list", verifyToken, async (req, res) => {
-  let data = await Product.find(req.body);
-  //res.send(data);
+app.get("/prod-list/:userId", verifyToken, async (req, res) => {
+  let data = await Product.find(req.params);
   if (data.length > 0) res.send(data);
   else res.send({ data: "No Product Found" });
 });
@@ -60,7 +59,7 @@ app.delete("/prod-delete/:_id", verifyToken, async (req, res) => {
 });
 
 app.get("/prod-get/:_id", verifyToken, async (req, res) => {
-  let data = await Product.findOne(req.params);
+  let data = await Product.find(req.params);
   if (data) res.send(data);
   else res.send({ data: "No Record Found" });
 });
@@ -90,5 +89,6 @@ function verifyToken(req, res, next) {
     });
   } else res.status(403).send("Please Provide token with header");
 }
+
 
 app.listen(process.env.PORT || 4000);
