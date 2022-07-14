@@ -12,8 +12,8 @@ const Jwt = require("jsonwebtoken");
 const jwtKey = "prateek";
 const app = express();
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 app.post("/register", async (req, res) => {
   let data = new model(req.body);
