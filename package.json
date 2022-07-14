@@ -7,8 +7,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve -s build"
+    "start": "pm2-runtime start ecosystem.config.js --env production"
   },
   "author": "Prateek Sharma",
   "license": "ISC",
@@ -20,6 +19,7 @@
     "mongodb": "^4.7.0",
     "mongoose": "^6.4.4",
     "nodemon": "^2.0.19",
+    "pm2": "^5.2.0",
     "serve": "^13.0.4"
   }
 }
